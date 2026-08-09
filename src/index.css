@@ -340,7 +340,182 @@ main {
   font-size: 0.7rem;
 }
 
+/* StatCard */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.stats-card {
+  border: 1px solid var(--border);
+  padding: 20px;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--surface);
+  transition: all 0.2s ease;
+}
+.stats-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+.stats-title {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+.stats-card strong {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.stats-card p {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+.stats-card svg {
+  width: 22px;
+  height: 22px;
+  color: var(--primary);
+}
+.stat-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  background: var(--active);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* Progress section */
+.progress-bar {
+  width: 100%;
+  max-width: 700px;
+  padding: 20px;
+  margin-top: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+.prog-title {
+  color: var(--primary);
+  font-weight: 500;
+}
+.progress-cont {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  padding: 5px;
+}
+
+.progress {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.prog-subject {
+  width: 75px;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.progress-track {
+  flex: 1;
+  background: var(--text-muted);
+  height: 10px;
+  border-radius: 50px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background-color: var(--primary);
+  border-radius: 50px;
+}
+.prog-percent {
+  color: var(--primary);
+  font-weight: 400;
+}
+
+/* Goal component section */
+.goals-section {
+  width: 100%;
+  max-width: 700px;
+  margin-top: 20px;
+}
+.goals-title {
+  color: var(--primary);
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+.goals {
+  width: 100%;
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+.goals-header {
+  display: flex;
+  justify-content: flex-end;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+.goals-progress-track {
+  width: 100%;
+  height: 8px;
+  margin: 12px 0 20px;
+  background: var(--border);
+  border-radius: 50px;
+  overflow: hidden;
+}
+.goals-progress {
+  height: 100%;
+  background: var(--primary);
+  border-radius: 50px;
+  transition: width 0.3s ease;
+}
+.goals-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.goal {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  background: var(--background);
+}
+.goal input {
+  cursor: pointer;
+}
+.goal span:nth-child(2) {
+  flex: 1;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+}
+.completed {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
+/* Responsiveness section */
 @media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+  }
   .topbar {
     height: 64px;
     padding: 0 16px;
@@ -366,6 +541,11 @@ main {
   .sidebar.open {
     transform: translateX(0);
   }
+
+  /* Stats grid responsiveness */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 500px) {
@@ -382,5 +562,9 @@ main {
   .topbar-btn {
     width: 36px;
     height: 36px;
+  }
+  /* stats grid responsiveness */
+  .stats-grid {
+    grid-template-columns: 1fr;
   }
 }
