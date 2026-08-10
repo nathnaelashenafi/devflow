@@ -566,7 +566,100 @@ main {
 .proj-inprogress {
   color: #4b3fd1;
 }
+/* Courses section */
+.courses-section {
+  width: 100%;
+  margin-top: 20px;
+}
+.courses-section h2 {
+  color: var(--primary);
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.course-card {
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.course-card h2 {
+  margin: 0 0 6px;
+  color: var(--text-primary);
+  font-size: 1.1rem;
+}
+.course-card > span {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+.course-progress-track {
+  width: 100%;
+  height: 8px;
+  margin: 16px 0 8px;
+  background: var(--border);
+  border-radius: 50px;
+  overflow: hidden;
+}
+.course-progress-fill {
+  height: 100%;
+  background: var(--primary);
+  border-radius: 50px;
+  transition: width 0.3s ease;
+}
 
+/* continue Learning Section */
+.continue-learning {
+  width: 100%;
+  margin-top: 20px;
+}
+.continue-learning h2 {
+  color: var(--primary);
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+.continue-card {
+  width: 100%;
+  max-width: 700px;
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+.continue-card h3 {
+  margin: 0 0 6px;
+  color: var(--text-primary);
+  font-size: 1.2rem;
+}
+.continue-card > span {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+.continue-card .course-progress-track {
+  margin: 20px 0 8px;
+}
+.continue-info {
+  display: flex;
+  justify-content: space-between;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+.continue-card button {
+  margin-top: 16px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background: var(--primary);
+  color: white;
+  cursor: pointer;
+}
+.continue-card button:hover {
+  opacity: 0.9;
+}
 /* Responsiveness section */
 @media (max-width: 768px) {
   .main-content {
@@ -606,6 +699,10 @@ main {
   /* projects grid */
   .projects-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+  /* Course section */
+  .courses-grid {
+    grid-template-columns: 1fr;
   }
 }
 
