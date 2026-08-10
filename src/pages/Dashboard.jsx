@@ -1,4 +1,5 @@
 import { Goal } from "../components/Goal";
+import { ProjectCard } from "../components/ProjectCard";
 import { ProgressBar } from "../components/ProgressBar";
 import { StatCard } from "../components/StatCard";
 import { BookOpen, Flame, FolderKanban, Zap } from "lucide-react";
@@ -56,6 +57,31 @@ export function Dashboard() {
       percentage: 35,
     },
   ];
+
+  const projects = [
+    {
+      id: 1,
+      title: "Portfolio Website",
+      technology: "React",
+      percentage: 85,
+      status: "In Progress",
+    },
+    {
+      id: 2,
+      title: "Weather App",
+      technology: "JavaScript",
+      percentage: 100,
+      status: "Completed",
+    },
+    {
+      id: 3,
+      title: "NexaFit",
+      technology: "HTML/CSS/JS",
+      percentage: 90,
+      status: "In Progress",
+    },
+  ];
+
   return (
     <div className="dashboard">
       <h1>Good morning, Nathnael 👋</h1>
@@ -90,6 +116,22 @@ export function Dashboard() {
       <div className="goals-section">
         <h2 className="goals-section-title">Todays Goals</h2>
         <Goal />
+      </div>
+      <div className="projects-section">
+        <h2>Recent Projects</h2>
+        <div className="projects-grid">
+          {projects.map((project) => {
+            return (
+              <ProjectCard
+                key={project.id}
+                title={project.title}
+                technology={project.technology}
+                percentage={project.percentage}
+                status={project.status}
+              />
+            );
+          })}
+        </div>
       </div>
     </div>
   );
