@@ -1,7 +1,7 @@
 import { Goal } from "../components/Goal";
 import { ProjectCard } from "../components/ProjectCard";
 import { ProgressBar } from "../components/ProgressBar";
-import { StatCard } from "../components/StatCard";
+import { StatsGrid } from "../components/StatCard";
 import { BookOpen, Flame, FolderKanban, Zap } from "lucide-react";
 export function Dashboard() {
   const stats = [
@@ -86,19 +86,7 @@ export function Dashboard() {
     <div className="dashboard">
       <h1>Good morning, Nathnael 👋</h1>
       <p>Your developer journey starts here.</p>
-      <div className="stats-grid">
-        {stats.map((stat) => {
-          return (
-            <StatCard
-              key={stat.id}
-              title={stat.title}
-              description={stat.description}
-              value={stat.value}
-              icon={stat.icon}
-            />
-          );
-        })}
-      </div>
+      <StatsGrid stats={stats} />
       <div className="progress-bar">
         <h2 className="prog-title">Learning Progress</h2>
         <div className="progress-cont">
