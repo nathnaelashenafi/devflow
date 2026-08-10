@@ -1,8 +1,8 @@
 import { Goal } from "../components/Goal";
-import { ProjectCard } from "../components/ProjectCard";
-import { ProgressBar } from "../components/ProgressBar";
-import { StatsGrid } from "../components/StatCard";
 import { BookOpen, Flame, FolderKanban, Zap } from "lucide-react";
+import { StatsGrid } from "../components/StatsGrid";
+import { LearningProgress } from "../components/LearningProgress";
+import { ProjectsGrid } from "../components/ProjectsGrid";
 export function Dashboard() {
   const stats = [
     {
@@ -87,40 +87,12 @@ export function Dashboard() {
       <h1>Good morning, Nathnael 👋</h1>
       <p>Your developer journey starts here.</p>
       <StatsGrid stats={stats} />
-      <div className="progress-bar">
-        <h2 className="prog-title">Learning Progress</h2>
-        <div className="progress-cont">
-          {learningProgress.map((prog) => {
-            return (
-              <ProgressBar
-                key={prog.id}
-                subject={prog.subject}
-                percentage={prog.percentage}
-              />
-            );
-          })}
-        </div>
-      </div>
+      <LearningProgress progress={learningProgress} />
       <div className="goals-section">
         <h2 className="goals-section-title">Todays Goals</h2>
         <Goal />
       </div>
-      <div className="projects-section">
-        <h2>Recent Projects</h2>
-        <div className="projects-grid">
-          {projects.map((project) => {
-            return (
-              <ProjectCard
-                key={project.id}
-                title={project.title}
-                technology={project.technology}
-                percentage={project.percentage}
-                status={project.status}
-              />
-            );
-          })}
-        </div>
-      </div>
+      <ProjectsGrid projects={projects} />
     </div>
   );
 }
