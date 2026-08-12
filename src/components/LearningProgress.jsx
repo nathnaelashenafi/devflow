@@ -11,6 +11,7 @@ export function LearningProgress({ progress }) {
               key={prog.id}
               subject={prog.subject}
               percentage={prog.percentage}
+              icon={prog.icon}
             />
           );
         })}

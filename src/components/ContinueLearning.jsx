@@ -1,48 +1,59 @@
-import { useState } from "react";
+export function ContinueLearning({ course, onProgressUpdate }) {
+  const progress = course.progress;
+  const isCompleted = course.completedLessons === course.lessons;
 
-export function ContinueLearning({ course }) {
-  const [started, setStarted] = useState(false);
-  const [completedLessons, setCompletedLessons] = useState(
-    course.completedLessons,
-  );
-
-  const progress = (completedLessons / course.lessons) * 100;
-  const isCompleted = completedLessons === course.lessons;
   return (
     <div className="continue-learning">
-      <h2>Continue Learning</h2>
+      <div className="section-heading">
+        <div>
+          <h2>Continue Learning</h2>
+          <p>Pick up where you left off.</p>
+        </div>
+
+        <span>{Math.round(progress)}% complete</span>
+      </div>
 
       <div className="continue-card">
-        <h3>{course.title}</h3>
-        <span>{course.category}</span>
-        <div className="course-progress-track">
-          <div
-            className="course-progress-fill"
-            style={{ width: `${progress}%` }}
-          ></div>
-        </div>
-        <div className="continue-info">
-          <span>
-            {completedLessons}/{course.lessons} lessons
-          </span>
-          <span>{progress}%</span>
-        </div>
-        {isCompleted && <p>🎉 You completed this course!</p>}{" "}
-        <button
-          disabled={isCompleted}
-          onClick={() => {
-            setStarted(true);
+        <div className="continue-header">
+          <div className="continue-icon">
+            <span>▶</span>
+          </div>
 
-            if (completedLessons < course.lessons) {
-              setCompletedLessons((current) => current + 1);
-            }
-          }}
+          <div className="continue-title">
+            <h3>{course.title}</h3>
+            <span>{course.category}</span>
+          </div>
+        </div>
+
+        <div className="continue-progress">
+          <div className="course-progress-track">
+            <div
+              className="course-progress-fill"
+              style={{ width: `${progress}%` }}
+            ></div>
+          </div>
+
+          <div className="continue-info">
+            <span>
+              {course.completedLessons}/{course.lessons} lessons
+            </span>
+
+            <span>{Math.round(progress)}%</span>
+          </div>
+        </div>
+
+        {isCompleted && (
+          <p className="course-completed-message">
+            🎉 You completed this course!
+          </p>
+        )}
+
+        <button
+          className="continue-button"
+          disabled={isCompleted}
+          onClick={() => onProgressUpdate(course.id)}
         >
-          {isCompleted
-            ? "Course Completed"
-            : started
-              ? "Learning Started"
-              : "Continue Learning"}
+          {isCompleted ? "Course Completed" : "Complete Lesson"}
         </button>
       </div>
     </div>

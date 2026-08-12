@@ -9,7 +9,6 @@ import { Profile } from "./pages/Profile";
 import { Projects } from "./pages/Projects";
 import { Settings } from "./pages/Settings";
 import { NotFound } from "./pages/NotFound";
-
 export function App() {
   return (
     <BrowserRouter>

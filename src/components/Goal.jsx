@@ -1,25 +1,26 @@
 import { useState } from "react";
+import "../index.css";
 
 export function Goal() {
   const initialGoals = [
     {
       id: 1,
-      title: "Complete React lesson",
-      completed: false,
-    },
-    {
-      id: 2,
-      title: "Build dashboard",
+      title: "Learn React Router",
       completed: true,
     },
     {
+      id: 2,
+      title: "Build Dashboard UI",
+      completed: false,
+    },
+    {
       id: 3,
-      title: "Practice JavaScript",
+      title: "Push project to GitHub",
       completed: false,
     },
     {
       id: 4,
-      title: "Work on project",
+      title: "Read 20 pages of Clean Code",
       completed: false,
     },
   ];
@@ -27,13 +28,22 @@ export function Goal() {
   const [goals, setGoals] = useState(initialGoals);
 
   const completedGoals = goals.filter((goal) => goal.completed).length;
+
   const progress = (completedGoals / goals.length) * 100;
+
+  const toggleGoal = (id) => {
+    setGoals((currentGoals) =>
+      currentGoals.map((goal) =>
+        goal.id === id ? { ...goal, completed: !goal.completed } : goal,
+      ),
+    );
+  };
 
   return (
     <div className="goals">
       <div className="goals-header">
         <span>
-          {completedGoals} of {goals.length} Completed
+          {completedGoals} of {goals.length} completed
         </span>
       </div>
 
@@ -47,26 +57,21 @@ export function Goal() {
             <input
               type="checkbox"
               checked={goal.completed}
-              onChange={() => {
-                setGoals(
-                  goals.map((item) => {
-                    if (item.id === goal.id) {
-                      return {
-                        ...item,
-                        completed: !item.completed,
-                      };
-                    }
-
-                    return item;
-                  }),
-                );
-              }}
+              onChange={() => toggleGoal(goal.id)}
             />
 
-            <span>{goal.title}</span>
+            <span className={goal.completed ? "goal-completed" : ""}>
+              {goal.title}
+            </span>
 
-            <span className="completed">
-              {goal.completed ? "Completed" : "In progress"}
+            <span
+              className={
+                goal.completed
+                  ? "goal-status goal-done"
+                  : "goal-status goal-pending"
+              }
+            >
+              {goal.completed ? "Done" : "Pending"}
             </span>
           </div>
         ))}

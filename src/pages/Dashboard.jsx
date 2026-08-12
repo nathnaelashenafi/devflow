@@ -22,7 +22,7 @@ export function Dashboard() {
     {
       id: "3",
       title: "Projects",
-      value: "-> 80%",
+      value: "80%",
       description: "+3 projects",
       icon: FolderKanban,
     },
@@ -30,7 +30,7 @@ export function Dashboard() {
       id: "4",
       title: "XP",
       value: "+2450",
-      description: "+320 points this week",
+      description: "+320 this week",
       icon: Zap,
     },
   ];
@@ -40,57 +40,84 @@ export function Dashboard() {
       id: "1",
       subject: "JavaScript",
       percentage: 85,
+      icon: "javascript",
     },
     {
       id: "2",
       subject: "React",
       percentage: 72,
+      icon: "react",
     },
     {
       id: "3",
       subject: "Python",
       percentage: 55,
+      icon: "python",
     },
     {
       id: "4",
-      subject: "AWS",
-      percentage: 35,
+      subject: "CSS",
+      percentage: 100,
+      icon: "css",
+    },
+    {
+      id: "5",
+      subject: "Node.js",
+      percentage: 30,
+      icon: "node",
     },
   ];
 
   const projects = [
     {
       id: 1,
-      title: "Portfolio Website",
-      technology: "React",
-      percentage: 85,
-      status: "In Progress",
-    },
-    {
-      id: 2,
       title: "Weather App",
-      technology: "JavaScript",
+      technology: "JavaScript • API • CSS",
+      image: "/projects/weatherapp.png",
       percentage: 100,
       status: "Completed",
     },
     {
+      id: 2,
+      title: "NexaAI",
+      technology: "HTML • CSS • JavaScript",
+      image: "/projects/nexaai.png",
+      percentage: 90,
+      status: "In Progress",
+    },
+    {
       id: 3,
       title: "NexaFit",
-      technology: "HTML/CSS/JS",
-      percentage: 90,
+      technology: "HTML • CSS • JavaScript",
+      image: "/projects/nexafit.png",
+      percentage: 95,
       status: "In Progress",
     },
   ];
 
   return (
     <div className="dashboard">
-      <h1>Good morning, Nathnael 👋</h1>
-      <p>Your developer journey starts here.</p>
+      <div className="dashboard-header">
+        <div>
+          <h1>Good morning, Nathnael 👋</h1>
+          <p>Keep building. Keep learning. Keep growing.</p>
+        </div>
+
+        <div className="dashboard-date">
+          <span>Today's Progress</span>
+          <strong>78%</strong>
+        </div>
+      </div>
       <StatsGrid stats={stats} />
-      <LearningProgress progress={learningProgress} />
-      <div className="goals-section">
-        <h2 className="goals-section-title">Todays Goals</h2>
-        <Goal />
+      <div className="dashboard-main-grid">
+        <LearningProgress progress={learningProgress} />
+        <div className="goals-section">
+          <div className="section-heading">
+            <h2 className="goals-section-title">Todays Goals</h2>
+            <button> + Add Goal</button>
+          </div>
+          <Goal />
+        </div>
       </div>
       <ProjectsGrid projects={projects} />
     </div>
