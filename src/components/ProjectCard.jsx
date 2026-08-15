@@ -1,6 +1,13 @@
 import "../index.css";
 
-export function ProjectCard({ title, technology, percentage, status, image }) {
+export function ProjectCard({
+  title,
+  technology,
+  percentage,
+  status,
+  image,
+  link,
+}) {
   return (
     <div className="project-card">
       <div className="project-image">
@@ -34,7 +41,14 @@ export function ProjectCard({ title, technology, percentage, status, image }) {
           <span>{percentage}%</span>
         </div>
 
-        <button className="project-button">View Project</button>
+        <a
+          className="project-button"
+          href={link}
+          target="_blank"
+          rel="noreferrer"
+        >
+          View Project
+        </a>
       </div>
     </div>
   );

@@ -1,0 +1,109 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Montierrat", sans-serif;
+}
+
+#app {
+  position: relative;
+  height: 420px;
+  width: 420px;
+  display: block;
+  margin: 20px auto;
+  border-radius: 45px;
+  text-align: center;
+  padding: 0px 30px;
+  overflow: hidden;
+  background-image:
+    radial-gradient(
+      circle at top right,
+      hsla(150, 80%, 90%, 0.18) 0%,
+      hsla(150, 70%, 70%, 0.1) 10%,
+      hsla(150, 60%, 50%, 0.06) 18%,
+      transparent 30%
+    ),
+    linear-gradient(
+      155deg,
+      hsl(160, 70%, 18%) 0%,
+      hsl(158, 65%, 15%) 20%,
+      hsl(155, 60%, 12%) 45%,
+      hsl(150, 55%, 10%) 70%,
+      hsl(145, 50%, 7%) 100%
+    );
+}
+
+#searchBar {
+  display: flex;
+  padding: 40px 0;
+  justify-content: center;
+}
+
+#searchBarInput {
+  background-color: none;
+  border: none;
+  width: 80%;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid white;
+  color: white;
+  margin: 4px 5px 0px 0px;
+}
+
+input::placeholder {
+  color: #fff;
+  opacity: 0.6;
+}
+input:focus {
+  outline: none;
+}
+
+#Info {
+  line-height: 0.5rem;
+  color: #fff;
+}
+
+#Info h3 {
+  font-size: 40px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 0.6em;
+}
+
+#description {
+  text-transform: uppercase;
+  color: #fff;
+}
+
+#temp {
+  color: #fff;
+  font-size: 30px;
+  margin-top: 20px;
+}
+
+#searchIcon {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+#extraInfo {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  overflow: hidden;
+  padding: 0;
+  padding-bottom: 10px;
+  font-size: 1.3rem;
+  color: #fff;
+}
+
+#extraInfo h5 {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+}

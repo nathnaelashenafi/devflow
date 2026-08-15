@@ -15,6 +15,23 @@
   --motivation-bg: #f1efff;
   --motivation-border: #e9e6ff;
 }
+.app-layout:not(.light-mode) {
+  --primary: #a99cff;
+  --background: #0f0e1b;
+  --surface: #171625;
+  --text-primary: #f4f3fa;
+  --text-secondary: #b7b4c7;
+  --text-muted: #858196;
+  --border: #29273a;
+  --hover: #211f32;
+  --active: #27233e;
+  --danger: #ef6b6b;
+  --danger-bg: #2d1c20;
+  --theme-bg: #141320;
+  --theme-border: #29273a;
+  --motivation-bg: #211d38;
+  --motivation-border: #302b4d;
+}
 
 * {
   box-sizing: border-box;
@@ -29,7 +46,12 @@ body {
   color: var(--text-primary);
 }
 .app-layout {
+  background: var(--background);
+  color: var(--text-primary);
   min-height: 100vh;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
 .main-content {
@@ -567,102 +589,180 @@ main {
 /* Goal component section */
 .goals-section {
   width: 100%;
-  margin-top: 20px;
 }
-.section-heading {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 12px;
-}
-.section-heading h2 {
-  margin: 0;
+
+.goals-section-title {
   color: var(--text-primary);
   font-size: 1rem;
   font-weight: 600;
 }
-.section-heading button {
-  border: none;
-  background: transparent;
+
+.goals-section .section-heading button {
+  padding: 7px 12px;
   color: var(--primary);
-  font-family: inherit;
-  font-size: 0.8rem;
-  font-weight: 500;
+  background: var(--active);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.75rem;
   cursor: pointer;
 }
+
 .goals {
-  width: 100%;
-  padding: 20px;
+  padding: 18px;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 14px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
 }
+
 .goals-header {
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.goals-header span {
   color: var(--text-muted);
   font-size: 0.75rem;
 }
+
+.goals-header strong {
+  color: var(--primary);
+  font-size: 0.8rem;
+}
+
 .goals-progress-track {
   width: 100%;
-  height: 5px;
-  margin: 12px 0 20px;
+  height: 7px;
+  margin-bottom: 16px;
   background: var(--border);
   border-radius: 50px;
   overflow: hidden;
 }
+
 .goals-progress {
   height: 100%;
   background: var(--primary);
   border-radius: 50px;
   transition: width 0.3s ease;
 }
+
 .goals-list {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
+
 .goal {
-  min-height: 48px;
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 8px;
-  border-bottom: 1px solid var(--border);
+  gap: 10px;
+  padding: 10px;
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 9px;
 }
-.goal:last-child {
-  border-bottom: none;
-}
-.goal input {
-  width: 17px;
-  height: 17px;
+
+.goal-check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
   flex-shrink: 0;
+  color: white;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 6px;
   cursor: pointer;
-  accent-color: var(--primary);
 }
-.goal span:nth-child(2) {
+
+.goal-check.completed {
+  color: white;
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.goal > span:nth-child(2) {
   flex: 1;
   color: var(--text-primary);
-  font-size: 0.85rem;
+  font-size: 0.75rem;
 }
+
 .goal-completed {
   color: var(--text-muted) !important;
   text-decoration: line-through;
 }
+
 .goal-status {
-  padding: 5px 9px;
+  padding: 4px 7px;
   border-radius: 6px;
-  font-size: 0.7rem;
-  font-weight: 500;
+  font-size: 0.65rem;
 }
+
 .goal-done {
-  color: #16834b;
-  background: #eaf8f0;
+  color: var(--primary);
+  background: var(--active);
 }
+
 .goal-pending {
-  color: #c46b13;
-  background: #fff4e6;
+  color: var(--text-muted);
+  background: var(--border);
+}
+
+.goals-header > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.add-goal-button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 10px;
+  color: var(--primary);
+  background: var(--active);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.7rem;
+  cursor: pointer;
+}
+
+.add-goal-button:hover {
+  opacity: 0.85;
+}
+
+.add-goal-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.add-goal-form input {
+  flex: 1;
+  min-width: 0;
+  padding: 9px 10px;
+  color: var(--text-primary);
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  outline: none;
+  font-size: 0.75rem;
+}
+
+.add-goal-form input:focus {
+  border-color: var(--primary);
+}
+
+.add-goal-form button {
+  padding: 8px 12px;
+  color: white;
+  background: var(--primary);
+  border: none;
+  border-radius: 8px;
+  font-size: 0.7rem;
+  cursor: pointer;
 }
 
 /* dasboard */
@@ -714,6 +814,35 @@ main {
   gap: 18px;
   width: 100%;
   margin-top: 20px;
+}
+/* Light Mode toggle */
+.toggle {
+  display: flex;
+  align-items: center;
+  width: 32px;
+  height: 18px;
+  padding: 2px;
+  margin-left: auto;
+  background: var(--border);
+  border-radius: 50px;
+  transition: 0.2s ease;
+}
+
+.toggle-circle {
+  width: 14px;
+  height: 14px;
+  background: var(--text-muted);
+  border-radius: 50%;
+  transition: 0.2s ease;
+}
+
+.toggle-active {
+  background: var(--primary);
+}
+
+.toggle-active .toggle-circle {
+  margin-left: 14px;
+  background: white;
 }
 
 /* Project Component section */
@@ -837,6 +966,7 @@ main {
 }
 
 .project-button {
+  display: block;
   width: 100%;
   margin-top: 16px;
   padding: 9px 12px;
@@ -845,6 +975,9 @@ main {
   border: 1px solid var(--border);
   border-radius: 8px;
   font-size: 0.75rem;
+  text-align: center;
+  text-decoration: none;
+  box-sizing: border-box;
   cursor: pointer;
   transition:
     background 0.2s ease,
@@ -855,6 +988,74 @@ main {
   background: var(--active);
   border-color: var(--primary);
 }
+
+/* project.jsx */
+.projects-page {
+  width: 100%;
+}
+
+.projects-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.projects-page-header h1 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.projects-page-header p {
+  margin: 6px 0 0;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.projects-page-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: var(--primary);
+  background: var(--active);
+  border-radius: 10px;
+}
+
+.projects-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.projects-stat {
+  padding: 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.projects-stat span {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
+.projects-stat strong {
+  display: block;
+  margin-top: 6px;
+  color: var(--text-primary);
+  font-size: 1.3rem;
+}
+
+.projects-page .projects-section {
+  margin-top: 0;
+}
+
 /* Courses section */
 .courses-section {
   width: 100%;
@@ -1063,18 +1264,578 @@ main {
   color: #16834b;
   font-size: 0.75rem;
 }
-/* Responsiveness section */
+/* Profile Page */
+.profile {
+  width: 100%;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.profile-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  color: var(--primary);
+  background: var(--active);
+  border-radius: 50%;
+}
+
+.profile-header h1 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1.4rem;
+}
+
+.profile-header p {
+  margin: 5px 0 0;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.profile-edit-button {
+  margin-left: auto;
+  padding: 9px 16px;
+  color: white;
+  background: var(--primary);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.profile-card {
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.profile-card-heading {
+  margin-bottom: 18px;
+}
+
+.profile-card-heading h2 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.profile-info-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.profile-info-item > svg {
+  color: var(--primary);
+}
+
+.profile-info-item div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.profile-info-item span {
+  color: var(--text-muted);
+  font-size: 0.7rem;
+}
+
+.profile-info-item strong {
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.profile-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.profile-skills span {
+  padding: 7px 11px;
+  color: var(--primary);
+  background: var(--active);
+  border-radius: 7px;
+  font-size: 0.75rem;
+}
+
+.profile-overview {
+  margin-top: 16px;
+}
+
+.profile-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.profile-stat {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px;
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.profile-stat > svg {
+  color: var(--primary);
+}
+
+.profile-stat div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.profile-stat span {
+  color: var(--text-muted);
+  font-size: 0.7rem;
+}
+
+.profile-stat strong {
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.profile-info-item a {
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+/* Goals page */
+.goals-page {
+  width: 100%;
+}
+
+.goals-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.goals-page-header h1 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+}
+
+.goals-page-header p {
+  margin: 6px 0 0;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.goals-add-button {
+  padding: 9px 16px;
+  color: white;
+  background: var(--primary);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.goals-page-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.goals-page-stat {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.goals-page-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: var(--primary);
+  background: var(--active);
+  border-radius: 9px;
+}
+
+.goals-page-stat div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.goals-page-stat span {
+  color: var(--text-muted);
+  font-size: 0.7rem;
+}
+
+.goals-page-stat strong {
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+.goals-page-content {
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+/* Calendar Page */
+.calendar-page {
+  width: 100%;
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.calendar-header h1 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+}
+
+.calendar-header p {
+  margin: 6px 0 0;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.calendar-add-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 15px;
+  color: white;
+  background: var(--primary);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.calendar-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+}
+
+.calendar-card,
+.calendar-events {
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.calendar-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.calendar-month h2 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1.05rem;
+}
+
+.calendar-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.calendar-actions button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 9px;
+  color: var(--text-secondary);
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 0.7rem;
+}
+
+.calendar-actions button:hover {
+  color: var(--primary);
+  background: var(--hover);
+}
+
+.calendar-weekdays,
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.calendar-weekdays {
+  margin-bottom: 8px;
+}
+
+.calendar-weekdays span {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.7rem;
+}
+
+.calendar-day {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 58px;
+  color: var(--text-primary);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.calendar-day:hover {
+  background: var(--hover);
+}
+
+.calendar-day.today {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.calendar-day.selected {
+  color: white;
+  background: var(--primary);
+}
+
+.calendar-day.empty {
+  cursor: default;
+}
+
+.calendar-day i {
+  position: absolute;
+  bottom: 7px;
+  width: 4px;
+  height: 4px;
+  background: var(--primary);
+  border-radius: 50%;
+}
+
+.calendar-day.selected i {
+  background: white;
+}
+
+.calendar-events-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.calendar-events-header h2 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+.calendar-events-header p {
+  margin: 5px 0 0;
+  color: var(--text-muted);
+  font-size: 0.7rem;
+}
+
+.calendar-events-header > svg {
+  color: var(--primary);
+}
+
+.event-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.event-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+}
+
+.event-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  color: var(--primary);
+  background: var(--active);
+  border-radius: 7px;
+}
+
+.event-item div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.event-item strong {
+  color: var(--text-primary);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.event-item span {
+  color: var(--text-muted);
+  font-size: 0.65rem;
+}
+
+.no-events {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.no-events p {
+  margin: 8px 0 0;
+  font-size: 0.75rem;
+}
+.calendar-event-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.calendar-event-form input {
+  flex: 1;
+  min-width: 0;
+  padding: 9px 12px;
+  color: var(--text-primary);
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  outline: none;
+  font-size: 0.75rem;
+}
+
+.calendar-event-form input:focus {
+  border-color: var(--primary);
+}
+
+.calendar-event-form button {
+  padding: 9px 14px;
+  color: white;
+  background: var(--primary);
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 0.75rem;
+}
+
+.event-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+lets remove not .event-details {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 3px;
+}
+
+.event-delete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  color: var(--text-muted);
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.event-delete:hover {
+  color: var(--danger);
+  background: var(--danger-bg);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 900px) {
   .main-content {
     margin-left: 0;
   }
+
   .topbar {
     height: 64px;
     padding: 0 16px;
   }
 
   .topbar-search {
-    width: 200px;
+    width: 180px;
   }
 
   .profile-info {
@@ -1084,129 +1845,213 @@ main {
   .topbar-profile {
     margin-left: 0;
   }
+
   .sidebar {
-    width: 230px;
+    width: 240px;
     transform: translateX(-100%);
-    transition: transform 0.25s ease;
   }
 
   .sidebar.open {
     transform: translateX(0);
   }
 
-  /* Stats grid responsiveness */
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  /* projects grid */
   .projects-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  /* Course section */
+
   .courses-grid {
     grid-template-columns: 1fr;
   }
-  /* dashboard */
+
   .dashboard {
     max-width: 100%;
   }
-  .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+
   .dashboard-main-grid {
     grid-template-columns: 1fr;
   }
-  .projects-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  /*learning */
+
   .learning {
     max-width: 100%;
   }
+
   .learning-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .calendar-layout {
     grid-template-columns: 1fr;
   }
-  .courses-grid {
-    grid-template-columns: 1fr;
+
+  .projects-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  main {
+    padding: 20px;
+  }
+
+  .goals-page-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .projects-stats {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
 @media (max-width: 600px) {
-  .dashboard {
-    padding-bottom: 30px;
+  main {
+    padding: 16px;
   }
+
+  .dashboard {
+    padding-bottom: 24px;
+  }
+
   .dashboard-header {
     align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
   }
+
   .dashboard-header h1 {
     font-size: 1.25rem;
   }
+
   .dashboard-header p {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
   }
+
   .dashboard-date {
     display: none;
   }
+
   .stats-grid {
     grid-template-columns: 1fr 1fr;
     gap: 10px;
   }
+
   .stats-card {
-    padding: 12px;
+    padding: 14px;
+    min-height: 120px;
   }
+
   .stats-title {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
+
   .stats-card strong {
-    font-size: 0.95rem;
+    font-size: 1.1rem;
   }
+
   .stats-card p {
     font-size: 0.7rem;
   }
+
   .dashboard-main-grid {
     grid-template-columns: 1fr;
   }
+
   .progress-bar {
-    padding: 16px;
+    padding: 14px;
   }
+
   .prog-subject {
-    width: 65px;
+    width: 60px;
     font-size: 0.75rem;
   }
-  .progress-track {
-    height: 8px;
-  }
+
   .goals {
-    padding: 16px;
+    padding: 14px;
   }
+
   .goal {
     gap: 8px;
+    padding: 8px 10px;
   }
+
   .goal span:nth-child(2) {
     font-size: 0.75rem;
   }
+
   .goal-status {
-    padding: 4px 6px;
+    padding: 3px 6px;
     font-size: 0.6rem;
   }
+
   .projects-grid {
     grid-template-columns: 1fr;
   }
+
   .project-image {
-    height: 180px;
+    height: 160px;
   }
-  /* learning */
+
   .learning-header h1 {
     font-size: 1.25rem;
   }
+
   .learning-header p {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
   }
+
+  .learning-stats {
+    grid-template-columns: 1fr;
+  }
+
   .learning-stat {
-    padding: 13px;
+    padding: 12px;
   }
-  .courses-section .section-heading {
+
+  .projects-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .projects-page-header {
     align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .goals-page-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .goals-page-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .profile-edit-button {
+    margin-left: 0;
+  }
+
+  .profile-stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .calendar-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .calendar-day {
+    height: 44px;
+    font-size: 0.75rem;
   }
 }

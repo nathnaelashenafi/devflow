@@ -4,10 +4,8 @@ import { Dashboard } from "./pages/Dashboard";
 import { Learning } from "./pages/Learning";
 import { Calendar } from "./pages/Calendar";
 import { Goals } from "./pages/Goals";
-import { Notes } from "./pages/Notes";
 import { Profile } from "./pages/Profile";
 import { Projects } from "./pages/Projects";
-import { Settings } from "./pages/Settings";
 import { NotFound } from "./pages/NotFound";
 export function App() {
   return (
@@ -20,8 +18,6 @@ export function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/goals" element={<Goals />} />
           <Route path="/calendar" element={<Calendar />} />
-          <Route path="/notes" element={<Notes />} />
-          <Route path="/settings" element={<Settings />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

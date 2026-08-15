@@ -15,6 +15,7 @@ export function ProjectsGrid({ projects }) {
               percentage={project.percentage}
               status={project.status}
               image={project.image}
+              link={project.link}
             />
           );
         })}

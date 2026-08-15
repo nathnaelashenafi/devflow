@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <div id="app">
+      <div id="searchBar">
+        <input placeholder="Search by city" type="text" id="searchBarInput" />
+        <button id="searchIcon">
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div id="Info">
+        <p id="date">Date</p>
+        <h3 id="city">Location</h3>
+      </div>
+
+      <div id="tempImg"></div>
+      <div id="description"></div>
+
+      <div id="temp"></div>
+
+      <div id="extraInfo">
+        <div class="cols">
+          <h5>Highs</h5>
+          <p id="tempMax">0</p>
+        </div>
+
+        <div class="cols">
+          <h5>Lows</h5>
+          <p id="tempLow">0</p>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
