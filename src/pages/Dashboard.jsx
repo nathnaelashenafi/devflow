@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Goal } from "../components/Goal";
 import { BookOpen, Flame, FolderKanban, Zap } from "lucide-react";
 import { StatsGrid } from "../components/StatsGrid";
@@ -6,7 +7,10 @@ import { ProjectsGrid } from "../components/ProjectsGrid";
 import { projects } from "../data/projects";
 import { goalsData } from "../data/goals";
 import { learningProgress } from "../data/learningprogress";
+
 export function Dashboard() {
+  const [goals, setGoals] = useState(goalsData);
+
   const stats = [
     {
       id: "1",
@@ -59,7 +63,7 @@ export function Dashboard() {
             <h2 className="goals-section-title">Today's Goals</h2>
             <p>Stay focusedd on what matters</p>
           </div>
-          <Goal goals={goalsData} />
+          <Goal goals={goals} setGoals={setGoals} />
         </div>
       </div>
       <ProjectsGrid projects={projects} />

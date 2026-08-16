@@ -4,7 +4,7 @@ export function CourseCard({
   progress,
   lessons,
   completedLessons,
-  icon: Icon,
+  icon,
   selected,
   onSelect,
 }) {
@@ -12,7 +12,7 @@ export function CourseCard({
     <div className={`course-card ${selected ? "course-card-selected" : ""}`}>
       <div className="course-card-header">
         <div className="course-icon">
-          <Icon size={22} />
+          <img src={icon} alt={title} className="course-icon-image" />
         </div>
 
         <div className="course-card-info">

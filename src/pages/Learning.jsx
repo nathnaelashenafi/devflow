@@ -1,15 +1,11 @@
 import { CourseCard } from "../components/CourseCard";
 import { ContinueLearning } from "../components/ContinueLearning";
-import {
-  BookOpen,
-  CheckCircle,
-  Clock3,
-  Code2,
-  Atom,
-  Code,
-  Cloud,
-} from "lucide-react";
+import { BookOpen, CheckCircle, Clock3 } from "lucide-react";
 import { useState } from "react";
+import javascriptIcon from "../assets/icons8-javascript.svg";
+import reactIcon from "../assets/icons8-react.svg";
+import pythonIcon from "../assets/icons8-python.svg";
+import cssIcon from "../assets/icons8-css3.svg";
 
 export function Learning() {
   const [courses, setCourses] = useState([
@@ -20,7 +16,7 @@ export function Learning() {
       progress: 85,
       lessons: 24,
       completedLessons: 20,
-      icon: Code2,
+      icon: javascriptIcon,
     },
     {
       id: 2,
@@ -29,7 +25,7 @@ export function Learning() {
       progress: 72,
       lessons: 30,
       completedLessons: 22,
-      icon: Atom,
+      icon: reactIcon,
     },
     {
       id: 3,
@@ -38,16 +34,16 @@ export function Learning() {
       progress: 55,
       lessons: 28,
       completedLessons: 15,
-      icon: Code,
+      icon: pythonIcon,
     },
     {
       id: 4,
-      title: "AWS",
-      category: "Cloud",
-      progress: 35,
-      lessons: 32,
-      completedLessons: 11,
-      icon: Cloud,
+      title: "CSS",
+      category: "Frontend",
+      progress: 100,
+      lessons: 18,
+      completedLessons: 18,
+      icon: cssIcon,
     },
   ]);
 

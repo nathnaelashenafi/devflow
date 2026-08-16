@@ -4,11 +4,13 @@ import { Topbar } from "../components/Topbar";
 import { Outlet } from "react-router-dom";
 
 export function MainLayout() {
-  const [lightMode, setLightMode] = useState(false);
+  const [lightMode, setLightMode] = useState(true);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className={lightMode ? "app-layout light-mode" : "app-layout"}>
+    <div
+      className={lightMode ? "app-layout light-mode" : "app-layout dark-mode"}
+    >
       <Sidebar
         lightMode={lightMode}
         setLightMode={setLightMode}

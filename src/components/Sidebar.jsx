@@ -141,7 +141,7 @@ export function Sidebar({
               <Sun size={17} />
             </div>
 
-            <span>{lightMode ? "Light Mode" : "Dark Mode"}</span>
+            <span>{lightMode ? "Light Mode On" : "Dark Mode On"}</span>
 
             <div className={`toggle ${lightMode ? "toggle-active" : ""}`}>
               <div className="toggle-circle"></div>
