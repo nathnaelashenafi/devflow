@@ -362,6 +362,62 @@ main {
   font-size: 0.7rem;
 }
 
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.menu-button {
+  display: none;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--surface);
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.sidebar-close {
+  display: none;
+  margin-left: auto;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.notification-wrapper {
+  position: relative;
+}
+
+.notification-popup {
+  position: absolute;
+  top: 48px;
+  right: 0;
+  width: 220px;
+  padding: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  z-index: 200;
+}
+
+.notification-popup strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.notification-popup p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+}
+
 /* StatCard */
 .stats-grid {
   display: grid;
@@ -1813,6 +1869,66 @@ lets remove not .event-details {
   background: var(--danger-bg);
 }
 
+/* Not found page design */
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  padding: 30px;
+  text-align: center;
+}
+
+.not-found-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 18px;
+  color: var(--primary);
+  background: var(--active);
+  border-radius: 14px;
+}
+
+.not-found-code {
+  color: var(--primary);
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.not-found h1 {
+  margin: 12px 0 6px;
+  color: var(--text-primary);
+  font-size: 1.4rem;
+}
+
+.not-found p {
+  max-width: 400px;
+  margin: 0 0 20px;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+.not-found-button {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 16px;
+  color: white;
+  background: var(--primary);
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.75rem;
+}
+
+.not-found-button:hover {
+  opacity: 0.9;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .projects-grid {
@@ -1851,7 +1967,7 @@ lets remove not .event-details {
     transform: translateX(-100%);
   }
 
-  .sidebar.open {
+  .sidebar.sidebar-open {
     transform: translateX(0);
   }
 
@@ -1889,6 +2005,44 @@ lets remove not .event-details {
 
   .projects-stats {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .menu-button {
+    display: flex;
+  }
+
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    z-index: 300;
+  }
+
+  .sidebar.sidebar-open {
+    transform: translateX(0);
+  }
+
+  .sidebar-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 250;
+  }
+
+  .main-content {
+    margin-left: 0;
+  }
+
+  .topbar {
+    padding: 0 20px;
+  }
+
+  main {
+    padding: 20px;
   }
 }
 
@@ -2053,5 +2207,34 @@ lets remove not .event-details {
   .calendar-day {
     height: 44px;
     font-size: 0.75rem;
+  }
+
+  /* top bar */
+  .topbar {
+    padding: 0 14px;
+  }
+
+  .topbar-search {
+    width: 100%;
+  }
+
+  .topbar-left {
+    flex: 1;
+  }
+
+  .topbar-actions {
+    gap: 4px;
+  }
+
+  .topbar-profile {
+    padding: 0;
+  }
+
+  .profile-info {
+    display: none;
+  }
+
+  main {
+    padding: 16px;
   }
 }
