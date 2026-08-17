@@ -11,6 +11,7 @@
 Devflow is a personalized dashboard I built to help myself (and hopefully you too!) keep track of everything related to learning web development. Whether you're juggling multiple courses, working on side projects, or trying to hit your goals – Devflow makes it easy to see your progress at a glance and stay motivated.
 
 The inspiration came from wanting a central hub where I could:
+
 - 📈 Track my learning progress across different tech stacks
 - 🔥 Maintain consistent streaks to build discipline
 - 📁 Showcase and organize all my projects
@@ -23,34 +24,43 @@ The inspiration came from wanting a central hub where I could:
 ## ✨ Features
 
 ### 🏠 Dashboard
+
 Get a quick overview of your learning journey with real-time stats:
+
 - **Learning Progress** - See how far you've come this month
 - **Current Streak** - Track your consistency (mine's at 14 days! 🔥)
 - **Project Count** - Monitor how many projects you've completed
 - **XP Earned** - Gamify your learning with experience points
 
 ### 📚 Learning
+
 Stay organized with all your courses in one place:
+
 - Multiple course tracking (JavaScript, React, Python, CSS, etc.)
 - Progress bars for each course
 - Lesson completion tracking
 - Visual indicators for course status
 
 ### 💼 Projects
+
 Showcase everything you've built:
+
 - Project cards with descriptions
 - Progress indicators
 - Links to live projects and repositories
 - Organized portfolio view
 
 ### 🎯 Goals
+
 Keep yourself accountable:
+
 - Set short-term and long-term goals
 - Track completion status
 - See how many goals you've achieved
 - Stay motivated with visual progress
 
 ### 📅 Calendar & 👤 Profile
+
 - **Calendar** - Plan your learning schedule and see what you've done
 - **Profile** - Manage your personal info and preferences
 
@@ -72,23 +82,27 @@ This project was built with some solid modern technologies:
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - Node.js (v14 or higher)
 - npm or yarn
 
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/nathnaelashenafi/devflow.git
    cd devflow
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Start the development server**
+
    ```bash
    npm run dev
    ```
@@ -153,6 +167,7 @@ Feel free to check them out! They're all built with vanilla JavaScript and some 
 ## 🎓 What I Learned
 
 Building Devflow taught me a lot about:
+
 - Component architecture and reusability in React
 - State management with hooks (`useState`, etc.)
 - Client-side routing with React Router
@@ -169,8 +184,6 @@ I'm planning to add some cool features down the road:
 - 🌐 Backend integration with a database
 - 👥 Social features (share goals with friends, leaderboards)
 - 📊 Advanced analytics and insights
-- 🎨 Dark/Light theme toggle
-- 📱 Mobile app version
 - 🔔 Notifications and reminders
 - 💾 Data persistence across sessions
 
@@ -187,6 +200,7 @@ This project is open source and available under the MIT License. Feel free to us
 I'm Nathnael Ashenafi, a passionate developer and lifelong learner. This project is a reflection of my journey in web development and my commitment to continuous improvement.
 
 ### Let's Connect!
+
 - **GitHub:** [@nathnaelashenafi](https://github.com/nathnaelashenafi)
 - **Repository:** [devflow.git](https://github.com/nathnaelashenafi/devflow.git)
 
@@ -197,6 +211,7 @@ Feel free to star ⭐ this project if you find it helpful, and don't hesitate to
 ## 🙏 Acknowledgments
 
 Thanks to:
+
 - The React and Vite communities for amazing tools
 - Lucide for the beautiful icon library
 - Everyone who's encouraged me on this learning journey
@@ -205,4 +220,4 @@ Thanks to:
 
 **Happy Learning! Keep Building. Keep Growing. 🚀**
 
-*Last updated: August 2026*
+_Last updated: August 2026_
