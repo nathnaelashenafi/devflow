@@ -1,5 +1,6 @@
 :root {
-  --primary: #1a1d24;
+  --primary: #0a1226;
+  --primary-contrast: #f8fafc;
   --background: #f5f7fa;
   --surface: #ffffff;
   --text-primary: #171c26;
@@ -17,7 +18,8 @@
 }
 
 .app-layout.dark-mode {
-  --primary: #f2f2f2;
+  --primary: rgb(4, 77, 91);
+  --primary-contrast: #f3f6ff;
   --background: #101114;
   --surface: #17191d;
   --text-primary: #f5f7fb;
@@ -97,7 +99,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ffffff;
+  color: var(--primary-contrast);
   background: var(--primary);
   border-radius: 11px;
   box-shadow: 0 5px 14px rgba(26, 29, 36, 0.18);
@@ -1612,7 +1614,7 @@ main {
   align-items: center;
   gap: 6px;
   padding: 9px 15px;
-  color: white;
+  color: var(--primary-contrast);
   background: var(--primary);
   border: none;
   border-radius: 8px;
@@ -1713,7 +1715,7 @@ main {
 }
 
 .calendar-day.selected {
-  color: white;
+  color: var(--primary-contrast);
   background: var(--primary);
 }
 
@@ -1842,7 +1844,7 @@ main {
 
 .calendar-event-form button {
   padding: 9px 14px;
-  color: white;
+  color: var(--primary-contrast);
   background: var(--primary);
   border: none;
   border-radius: 7px;
