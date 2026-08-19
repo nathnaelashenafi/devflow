@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { CourseCard } from "../components/CourseCard";
 import { ContinueLearning } from "../components/ContinueLearning";
 import { BookOpen, CheckCircle, Clock3 } from "lucide-react";
@@ -88,61 +89,87 @@ export function Learning() {
     0,
   );
 
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
-    <div className="learning">
-      <div className="learning-header">
+    <motion.div
+      className="learning"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.4 }}
+    >
+      <motion.div
+        className="learning-header"
+        variants={fadeInUp}
+        initial="hidden"
+        animate="visible"
+        transition={{ duration: 0.4, delay: 0.1 }}
+      >
         <div>
           <h1>Learning Progress</h1>
           <p>Track your learning journey and keep building your skills.</p>
         </div>
-      </div>
+      </motion.div>
 
       <div className="learning-stats">
-        <div className="learning-stat">
-          <div className="learning-stat-icon">
-            <BookOpen size={20} />
-          </div>
+        {[
+          { icon: BookOpen, label: "Total Courses", value: courses.length },
+          {
+            icon: CheckCircle,
+            label: "Completed Courses",
+            value: completedCourses,
+          },
+          {
+            icon: Clock3,
+            label: "Lessons Completed",
+            value: `${completedLessons}/${totalLessons}`,
+          },
+        ].map((stat, index) => (
+          <motion.div
+            className="learning-stat"
+            key={stat.label}
+            variants={fadeInUp}
+            initial="hidden"
+            animate="visible"
+            transition={{ duration: 0.4, delay: 0.2 + index * 0.1 }}
+            whileHover={{ y: -3 }}
+          >
+            <div className="learning-stat-icon">
+              <stat.icon size={20} />
+            </div>
 
-          <div>
-            <span>Total Courses</span>
-            <strong>{courses.length}</strong>
-          </div>
-        </div>
-
-        <div className="learning-stat">
-          <div className="learning-stat-icon">
-            <CheckCircle size={20} />
-          </div>
-
-          <div>
-            <span>Completed Courses</span>
-            <strong>{completedCourses}</strong>
-          </div>
-        </div>
-
-        <div className="learning-stat">
-          <div className="learning-stat-icon">
-            <Clock3 size={20} />
-          </div>
-
-          <div>
-            <span>Lessons Completed</span>
-            <strong>
-              {completedLessons}/{totalLessons}
-            </strong>
-          </div>
-        </div>
+            <div>
+              <span>{stat.label}</span>
+              <strong>{stat.value}</strong>
+            </div>
+          </motion.div>
+        ))}
       </div>
 
       {selectedCourse && (
-        <ContinueLearning
-          key={selectedCourse.id}
-          course={selectedCourse}
-          onProgressUpdate={updateCourseProgress}
-        />
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.4 }}
+        >
+          <ContinueLearning
+            key={selectedCourse.id}
+            course={selectedCourse}
+            onProgressUpdate={updateCourseProgress}
+          />
+        </motion.div>
       )}
 
-      <div className="courses-section">
+      <motion.div
+        className="courses-section"
+        variants={fadeInUp}
+        initial="hidden"
+        animate="visible"
+        transition={{ duration: 0.4, delay: 0.5 }}
+      >
         <div className="section-heading">
           <div>
             <h2>My Courses</h2>
@@ -153,21 +180,28 @@ export function Learning() {
         </div>
 
         <div className="courses-grid">
-          {courses.map((course) => (
-            <CourseCard
+          {courses.map((course, index) => (
+            <motion.div
               key={course.id}
-              title={course.title}
-              category={course.category}
-              progress={course.progress}
-              lessons={course.lessons}
-              completedLessons={course.completedLessons}
-              icon={course.icon}
-              selected={selectedCourseId === course.id}
-              onSelect={() => setSelectedCourseId(course.id)}
-            />
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 + index * 0.05 }}
+              whileHover={{ y: -5 }}
+            >
+              <CourseCard
+                title={course.title}
+                category={course.category}
+                progress={course.progress}
+                lessons={course.lessons}
+                completedLessons={course.completedLessons}
+                icon={course.icon}
+                selected={selectedCourseId === course.id}
+                onSelect={() => setSelectedCourseId(course.id)}
+              />
+            </motion.div>
           ))}
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }

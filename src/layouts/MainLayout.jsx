@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom";
 
 export function MainLayout() {
   const [lightMode, setLightMode] = useState(true);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth >= 900); // Set based on screen size
 
   return (
     <div

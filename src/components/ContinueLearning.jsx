@@ -1,9 +1,16 @@
+import { motion } from "framer-motion";
+
 export function ContinueLearning({ course, onProgressUpdate }) {
   const progress = course.progress;
   const isCompleted = course.completedLessons === course.lessons;
 
   return (
-    <div className="continue-learning">
+    <motion.div
+      className="continue-learning"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+    >
       <div className="section-heading">
         <div>
           <h2>Continue Learning</h2>
@@ -13,11 +20,19 @@ export function ContinueLearning({ course, onProgressUpdate }) {
         <span>{Math.round(progress)}% complete</span>
       </div>
 
-      <div className="continue-card">
+      <motion.div
+        className="continue-card"
+        whileHover={{ y: -3 }}
+        transition={{ duration: 0.2 }}
+      >
         <div className="continue-header">
-          <div className="continue-icon">
+          <motion.div
+            className="continue-icon"
+            whileHover={{ rotate: 360 }}
+            transition={{ duration: 0.6 }}
+          >
             <span>▶</span>
-          </div>
+          </motion.div>
 
           <div className="continue-title">
             <h3>{course.title}</h3>
@@ -27,10 +42,13 @@ export function ContinueLearning({ course, onProgressUpdate }) {
 
         <div className="continue-progress">
           <div className="course-progress-track">
-            <div
+            <motion.div
               className="course-progress-fill"
               style={{ width: `${progress}%` }}
-            ></div>
+              initial={{ width: 0 }}
+              animate={{ width: `${progress}%` }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
+            />
           </div>
 
           <div className="continue-info">
@@ -43,12 +61,17 @@ export function ContinueLearning({ course, onProgressUpdate }) {
         </div>
 
         {isCompleted && (
-          <p className="course-completed-message">
+          <motion.p
+            className="course-completed-message"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.4 }}
+          >
             🎉 You completed this course!
-          </p>
+          </motion.p>
         )}
 
-        <button
+        <motion.button
           className="continue-button"
           disabled={isCompleted}
           onClick={() => onProgressUpdate(course.id)}
@@ -57,10 +80,12 @@ export function ContinueLearning({ course, onProgressUpdate }) {
               ? "Course completed"
               : `Complete next lesson in ${course.title}`
           }
+          whileHover={!isCompleted ? { scale: 1.02 } : {}}
+          whileTap={!isCompleted ? { scale: 0.98 } : {}}
         >
           {isCompleted ? "Course Completed" : "Complete Lesson"}
-        </button>
-      </div>
-    </div>
+        </motion.button>
+      </motion.div>
+    </motion.div>
   );
 }

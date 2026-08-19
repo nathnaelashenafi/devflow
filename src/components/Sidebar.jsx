@@ -1,3 +1,4 @@
+import { motion, AnimatePresence } from "framer-motion";
 import {
   LayoutDashboard,
   BookOpen,
@@ -20,16 +21,33 @@ export function Sidebar({
   setSidebarOpen,
 }) {
   const closeSidebar = () => {
-    setSidebarOpen(false);
+    // Only close on mobile (screen width < 900px)
+    if (window.innerWidth < 900) {
+      setSidebarOpen(false);
+    }
   };
 
   return (
     <>
-      {sidebarOpen && (
-        <div className="sidebar-overlay" onClick={closeSidebar}></div>
-      )}
+      <AnimatePresence>
+        {sidebarOpen && window.innerWidth < 900 && (
+          <motion.div
+            className="sidebar-overlay"
+            onClick={closeSidebar}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          />
+        )}
+      </AnimatePresence>
 
-      <aside className={`sidebar ${sidebarOpen ? "sidebar-open" : ""}`}>
+      <motion.aside
+        className={`sidebar ${sidebarOpen ? "sidebar-open" : ""}`}
+        initial={{ x: -280 }}
+        animate={{ x: sidebarOpen ? 0 : -280 }}
+        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+      >
         <div className="sidebar-logo">
           <div className="logo-icon">
             <Code2 size={22} />
@@ -50,95 +68,81 @@ export function Sidebar({
           <div className="sidebar-section">
             <p className="section-title">Workspace</p>
 
-            <NavLink
-              to="/"
-              onClick={closeSidebar}
-              className={({ isActive }) =>
-                isActive ? "side-btn active" : "side-btn"
-              }
-            >
-              <LayoutDashboard size={19} />
-              <span>Dashboard</span>
-            </NavLink>
-
-            <NavLink
-              to="/learning"
-              onClick={closeSidebar}
-              className={({ isActive }) =>
-                isActive ? "side-btn active" : "side-btn"
-              }
-            >
-              <BookOpen size={19} />
-              <span>Learning</span>
-            </NavLink>
-
-            <NavLink
-              to="/projects"
-              onClick={closeSidebar}
-              className={({ isActive }) =>
-                isActive ? "side-btn active" : "side-btn"
-              }
-            >
-              <FolderKanban size={19} />
-              <span>Projects</span>
-            </NavLink>
-
-            <NavLink
-              to="/profile"
-              onClick={closeSidebar}
-              className={({ isActive }) =>
-                isActive ? "side-btn active" : "side-btn"
-              }
-            >
-              <User size={19} />
-              <span>Profile</span>
-            </NavLink>
+            {[
+              { to: "/", icon: LayoutDashboard, label: "Dashboard" },
+              { to: "/learning", icon: BookOpen, label: "Learning" },
+              { to: "/projects", icon: FolderKanban, label: "Projects" },
+              { to: "/profile", icon: User, label: "Profile" },
+            ].map((item, index) => (
+              <motion.div
+                key={item.to}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.05 }}
+              >
+                <NavLink
+                  to={item.to}
+                  onClick={closeSidebar}
+                  className={({ isActive }) =>
+                    isActive ? "side-btn active" : "side-btn"
+                  }
+                >
+                  <item.icon size={19} />
+                  <span>{item.label}</span>
+                </NavLink>
+              </motion.div>
+            ))}
           </div>
 
           <div className="sidebar-section">
             <p className="section-title">Productivity</p>
 
-            <NavLink
-              to="/goals"
-              onClick={closeSidebar}
-              className={({ isActive }) =>
-                isActive ? "side-btn active" : "side-btn"
-              }
-            >
-              <Target size={19} />
-              <span>Goals</span>
-            </NavLink>
-
-            <NavLink
-              to="/calendar"
-              onClick={closeSidebar}
-              className={({ isActive }) =>
-                isActive ? "side-btn active" : "side-btn"
-              }
-            >
-              <CalendarDays size={19} />
-              <span>Calendar</span>
-            </NavLink>
+            {[
+              { to: "/goals", icon: Target, label: "Goals" },
+              { to: "/calendar", icon: CalendarDays, label: "Calendar" },
+            ].map((item, index) => (
+              <motion.div
+                key={item.to}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.2 + index * 0.05 }}
+              >
+                <NavLink
+                  to={item.to}
+                  onClick={closeSidebar}
+                  className={({ isActive }) =>
+                    isActive ? "side-btn active" : "side-btn"
+                  }
+                >
+                  <item.icon size={19} />
+                  <span>{item.label}</span>
+                </NavLink>
+              </motion.div>
+            ))}
           </div>
         </nav>
 
         <div className="sidebar-bottom">
           <div className="sidebar-section">
-            <button
+            <motion.button
               className="side-btn logout"
               onClick={() => alert("Logout functionality coming soon.")}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               <LogOut size={19} />
               <span>Logout</span>
-            </button>
+            </motion.button>
           </div>
 
-          <button
+          <motion.button
             className="theme-toggle"
             onClick={() => setLightMode(!lightMode)}
             aria-label={
               lightMode ? "Switch to dark mode" : "Switch to light mode"
             }
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
           >
             <div className="theme-icon">
               <Sun size={17} />
@@ -149,14 +153,19 @@ export function Sidebar({
             <div className={`toggle ${lightMode ? "toggle-active" : ""}`}>
               <div className="toggle-circle"></div>
             </div>
-          </button>
+          </motion.button>
 
-          <div className="sidebar-motivation">
+          <motion.div
+            className="sidebar-motivation"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+          >
             <p>Keep pushing forward.</p>
             <span>Build. Learn. Grow.</span>
-          </div>
+          </motion.div>
         </div>
-      </aside>
+      </motion.aside>
     </>
   );
 }
