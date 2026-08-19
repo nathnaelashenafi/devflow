@@ -137,6 +137,7 @@ export function Calendar() {
         <button
           className="calendar-add-button"
           onClick={() => setShowEventForm(!showEventForm)}
+          aria-label={showEventForm ? "Cancel adding event" : "Add new event"}
         >
           {showEventForm ? <X size={16} /> : <Plus size={16} />}
           {showEventForm ? "Cancel" : "Add Event"}
@@ -153,13 +154,15 @@ export function Calendar() {
             </div>
 
             <div className="calendar-actions">
-              <button onClick={goToToday}>Today</button>
+              <button onClick={goToToday} aria-label="Go to today">
+                Today
+              </button>
 
-              <button onClick={previousMonth}>
+              <button onClick={previousMonth} aria-label="Previous month">
                 <ChevronLeft size={17} />
               </button>
 
-              <button onClick={nextMonth}>
+              <button onClick={nextMonth} aria-label="Next month">
                 <ChevronRight size={17} />
               </button>
             </div>
@@ -281,6 +284,7 @@ export function Calendar() {
                   <button
                     className="event-delete"
                     onClick={() => deleteEvent(event.id)}
+                    aria-label={`Delete event: ${event.title}`}
                   >
                     <Trash2 size={15} />
                   </button>

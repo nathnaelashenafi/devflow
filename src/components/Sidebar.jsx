@@ -136,6 +136,9 @@ export function Sidebar({
           <button
             className="theme-toggle"
             onClick={() => setLightMode(!lightMode)}
+            aria-label={
+              lightMode ? "Switch to dark mode" : "Switch to light mode"
+            }
           >
             <div className="theme-icon">
               <Sun size={17} />

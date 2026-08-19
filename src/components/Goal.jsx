@@ -80,6 +80,11 @@ export function Goal({ goals, setGoals }) {
             <button
               className={`goal-check ${goal.completed ? "completed" : ""}`}
               onClick={() => toggleGoal(goal.id)}
+              aria-label={
+                goal.completed
+                  ? "Mark goal as pending"
+                  : "Mark goal as completed"
+              }
             >
               {goal.completed && <Check size={14} />}
             </button>

@@ -61,7 +61,7 @@ export function Dashboard() {
         <div className="goals-section">
           <div className="section-heading">
             <h2 className="goals-section-title">Today's Goals</h2>
-            <p>Stay focusedd on what matters</p>
+            <p>Stay focused on what matters</p>
           </div>
           <Goal goals={goals} setGoals={setGoals} />
         </div>

@@ -4,12 +4,12 @@
   --background: #f5f7fa;
   --surface: #ffffff;
   --text-primary: #171c26;
-  --text-secondary: #5e6878;
-  --text-muted: #878f9a;
+  --text-secondary: #3f4555;
+  --text-muted: #6b7280;
   --border: #e7ebf1;
   --hover: #edf2f8;
   --active: #eaf0f6;
-  --danger: #e05252;
+  --danger: #d64545;
   --danger-bg: #fff1f1;
   --theme-bg: #f8fafc;
   --theme-border: #e4e9f0;
@@ -23,12 +23,12 @@
   --background: #101114;
   --surface: #17191d;
   --text-primary: #f5f7fb;
-  --text-secondary: #c1c7d0;
-  --text-muted: #8a919c;
+  --text-secondary: #b8bcc8;
+  --text-muted: #7a828f;
   --border: #2a2f36;
   --hover: #1f2329;
   --active: #232933;
-  --danger: #ff7b7b;
+  --danger: #ff6b6b;
   --danger-bg: #2a1e22;
   --theme-bg: #13161a;
   --theme-border: #2a2f36;
@@ -500,6 +500,8 @@ main {
   height: 100%;
   background: var(--primary);
   border-radius: 50px;
+  transform-origin: left;
+  transform: scaleX(0);
 }
 
 /* learning Progress section */
@@ -537,6 +539,7 @@ main {
   justify-content: center;
   flex-shrink: 0;
   overflow: visible;
+  aspect-ratio: 1 / 1;
 }
 
 .tech-icon-image,
@@ -565,6 +568,7 @@ main {
   height: 100%;
   background: var(--primary);
   border-radius: 50px;
+  transform: width 0.3s ease;
 }
 .prog-percent {
   width: 40px;
@@ -951,6 +955,7 @@ main {
   height: 170px;
   overflow: hidden;
   background: var(--border);
+  aspect-ratio: 360 / 170;
 }
 
 .project-image img {
@@ -1176,6 +1181,7 @@ main {
   border: none;
   border-radius: 0;
   padding: 0;
+  aspect-ratio: 1 / 1;
 }
 .course-card-header {
   display: flex;
@@ -1186,6 +1192,13 @@ main {
   flex: 1;
 }
 .course-card-info h2 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.course-card-info h3 {
   margin: 0;
   color: var(--text-primary);
   font-size: 1rem;

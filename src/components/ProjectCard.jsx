@@ -11,7 +11,13 @@ export function ProjectCard({
   return (
     <div className="project-card">
       <div className="project-image">
-        <img src={image} alt={`${title} preview`} />
+        <img
+          src={image}
+          alt={`${title} preview`}
+          loading="lazy"
+          width="360"
+          height="170"
+        />
       </div>
 
       <div className="project-content">
@@ -46,6 +52,7 @@ export function ProjectCard({
           href={link}
           target="_blank"
           rel="noreferrer"
+          aria-label={`View ${title} project - ${status}`}
         >
           View Project
         </a>

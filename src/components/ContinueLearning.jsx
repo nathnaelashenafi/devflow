@@ -52,6 +52,11 @@ export function ContinueLearning({ course, onProgressUpdate }) {
           className="continue-button"
           disabled={isCompleted}
           onClick={() => onProgressUpdate(course.id)}
+          aria-label={
+            isCompleted
+              ? "Course completed"
+              : `Complete next lesson in ${course.title}`
+          }
         >
           {isCompleted ? "Course Completed" : "Complete Lesson"}
         </button>

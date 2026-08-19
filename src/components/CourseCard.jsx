@@ -12,11 +12,18 @@ export function CourseCard({
     <div className={`course-card ${selected ? "course-card-selected" : ""}`}>
       <div className="course-card-header">
         <div className="course-icon">
-          <img src={icon} alt={title} className="course-icon-image" />
+          <img
+            src={icon}
+            alt={title}
+            className="course-icon-image"
+            loading="lazy"
+            width="38"
+            height="38"
+          />
         </div>
 
         <div className="course-card-info">
-          <h2>{title}</h2>
+          <h3>{title}</h3>
           <span>{category}</span>
         </div>
 
@@ -35,7 +42,11 @@ export function CourseCard({
           {completedLessons}/{lessons} lessons
         </span>
 
-        <button className="course-selected" onClick={onSelect}>
+        <button
+          className="course-selected"
+          onClick={onSelect}
+          aria-label={selected ? "Deselect course" : `View ${title} course`}
+        >
           {selected ? "Selected" : "View Course"}
         </button>
       </div>
