@@ -6,7 +6,7 @@
 
 ## 🌐 Live Demo
 
-**[Visit Devflow](https://natdevflow.netlify.app/)**
+**[Visit DevFlow](https://natdevflow.netlify.app/)**
 
 ---
 
