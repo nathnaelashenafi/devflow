@@ -25,7 +25,7 @@ With Devflow, I can:
 - 📁 Manage and showcase projects
 - 🎯 Set and track personal goals
 - 📅 Organize learning activities
-- ⚡ Track XP and learning streaks
+- ⚡ Track XP and learning streak
 
 ---
 
